@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HospitalDetailsController;
 use App\Http\Controllers\UserDetailsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     return view('user.details');
 // });
 Route::resource('/users_details', UserDetailsController::class);
+Route::resource('/hospital_details', HospitalDetailsController::class);

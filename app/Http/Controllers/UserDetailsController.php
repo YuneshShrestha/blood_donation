@@ -74,7 +74,12 @@ class UserDetailsController extends Controller
         $user = User::find($id);
         $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->blood_group = $request->blood_group;
+        if(isset($request->blood_group)){
+            $user->blood_group = $request->blood_group;
+        }
+        if(isset($request->pan)){
+            $user->pan = $request->pan;
+        }
         $user->update();
         return redirect()->back();
     }
