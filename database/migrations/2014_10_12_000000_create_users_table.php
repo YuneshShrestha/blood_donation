@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('blood_group')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lon')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

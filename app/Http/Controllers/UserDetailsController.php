@@ -72,6 +72,7 @@ class UserDetailsController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        // return $request;
         $user->phone = $request->phone;
         $user->address = $request->address;
         if(isset($request->blood_group)){
@@ -79,6 +80,12 @@ class UserDetailsController extends Controller
         }
         if(isset($request->pan)){
             $user->pan = $request->pan;
+        }
+        if(isset($request->lat)){
+            $user->lat = $request->lat;
+        }
+        if(isset($request->lon)){
+            $user->lon = $request->lon;
         }
         $user->update();
         return redirect()->back();
