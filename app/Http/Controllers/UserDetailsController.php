@@ -14,7 +14,8 @@ class UserDetailsController extends Controller
      */
     public function index()
     {
-        return view('user.details');
+
+        // return view('user.details');
     }
 
     /**
@@ -24,7 +25,7 @@ class UserDetailsController extends Controller
      */
     public function create()
     {
-        return view('user.details');
+        // return view('user.details');
     }
 
     /**
@@ -57,7 +58,8 @@ class UserDetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.details',compact('user'));
     }
 
     /**
