@@ -6,12 +6,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/home">Home</a>
           </li>
+          @if (Auth::user()->isUser)
+            <li class="nav-item">
+              <a class="nav-link" href="/users_details/{{ Auth::id() }}/edit">Details</a>
+            </li>
+          @endif
+          @if (!(Auth::user()->isUser))
           <li class="nav-item">
-            <a class="nav-link" href="/users_details/{{ Auth::id() }}/edit">Details</a>
+            <a class="nav-link" href="">Details</a>
           </li>
+        @endif
           @guest
           @if (Route::has('login'))
               <li class="nav-item">
