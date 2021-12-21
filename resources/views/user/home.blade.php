@@ -45,7 +45,26 @@
             <p class="text-danger">Please fill the data in details tab</p>
            </div>
           @else
-            <p>Good To go</p> 
+            <div class="container">
+              <div class="row">
+                
+                <div class="col-md-8 mr-2">
+                  <h3>Offer List</h3>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Offer Title:</h5>
+                      <p class="card-text">By:</p>
+                      <p class="card-text">Required Points:</p>
+                      <button class="btn btn-primary">Collect</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 order-md-last order-first">
+                  <h3>Score:</h3>
+                  <p class="header">{{ $notification_count*10 }}</p>
+                </div>
+              </div>
+            </div>
           @endif  
 
     @endif

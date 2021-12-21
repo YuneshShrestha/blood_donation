@@ -15,9 +15,19 @@ class UserDetailsController extends Controller
      */
     public function index()
     {
-        $users = User::where('isUser','1')->get();
-        return view('user.home',compact('users'));
+       if(auth()->user()->isUser == '0')
+       {
+            $users = User::where('isUser','1')->get();
+            return view('user.home',compact('users'));
 
+       }
+       else{
+           $notification_count = Notification::where([
+               ['isPending',1],
+               ['user_id',auth()->user()->id]
+           ])->count();
+           return view('user.home',compact('notification_count'));
+       }
         // return view('user.details');
     }
 
