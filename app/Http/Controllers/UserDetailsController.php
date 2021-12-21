@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,8 @@ class UserDetailsController extends Controller
      */
     public function index()
     {
+        $users = User::where('isUser','1')->get();
+        return view('user.home',compact('users'));
 
         // return view('user.details');
     }
@@ -100,5 +103,32 @@ class UserDetailsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function userJson(){
+        $users = User::where('isUser','1')->get();
+        $user_json = json_encode($users);
+        return $user_json;
+    }
+    public function show_map(){
+        return view('user.user_map');
+    }
+    public function send_notification($id){
+        $notification = new Notification();
+        $notification->user_id = $id;
+        $notification->hospital_id = auth()->user()->id;
+        $notification->message = "Need Urgent Blood";
+        $notification->save();
+        return 'Success';
+    }
+    public function show_notification()
+    {
+        $notifications = Notification::where('user_id', auth()->user()->id)->orderBy('id','DESC')->get();
+        return view('user.show_notification', compact('notifications'));
+    }
+    public function reset_pending($id){
+        $notification = Notification::find($id);
+        $notification->isPending = 1;
+        $notification->update();
+        return redirect()->back();
     }
 }

@@ -25,7 +25,13 @@
         }
     </style>
 </head>
-<body>
+<body>   
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb container pt-2">
+          <li class="breadcrumb-item"><a href="/users_details">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Map</li>
+        </ol>
+      </nav>
     <div id="map"></div>
     
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>

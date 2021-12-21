@@ -17,6 +17,7 @@
       #map { width:100%;height: 400px;padding:0;margin:0; }
       .address { cursor:pointer }
       .address:hover { color:#AA0000;text-decoration:underline }
+      a{text-decoration: none}
     </style>
     <title></title>
   </head>

@@ -22,9 +22,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/users_details', function(){
 //     return view('user.details');
 // });
 Route::resource('/users_details', UserDetailsController::class);
-Route::resource('/hospital_details', HospitalDetailsController::class);
+// Route::resource('/hospital_details', HospitalDetailsController::class);
+Route::get('/user_json', [UserDetailsController::class, 'userJson']);
+Route::get('/show_map', [UserDetailsController::class, 'show_map']);
+Route::get('/send_notification/{id}', [UserDetailsController::class, 'send_notification']);
+Route::get('/show_notification', [UserDetailsController::class, 'show_notification']);
+Route::get('/reset_pending/{id}', [UserDetailsController::class, 'reset_pending']);
+
+

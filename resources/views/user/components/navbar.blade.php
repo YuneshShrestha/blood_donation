@@ -8,9 +8,13 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            <a class="nav-link active" aria-current="page" href="/users_details">Home</a>
           </li>
-      
+          @if (Auth::user()->isUser)
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/show_notification">Notification</a>
+            </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" href="/users_details/{{ Auth::id() }}/edit">Details</a>
           </li>
