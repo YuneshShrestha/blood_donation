@@ -16,6 +16,9 @@ class UserDetailsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         $blood_group = $request['blood_group'] ?? "";
@@ -27,6 +30,7 @@ class UserDetailsController extends Controller
                     ['isUser','1'],
                     ['blood_group', $blood_group]
                 ])->get();
+                $request->session()->flash('blood_group',$blood_group);
                 return view('user.home',compact('users'));
             }
             else{

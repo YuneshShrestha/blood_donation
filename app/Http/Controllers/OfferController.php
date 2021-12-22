@@ -12,6 +12,9 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
         $offers = Offer::all();
@@ -38,7 +41,7 @@ class OfferController extends Controller
     {
         $request->validate([
             'offer'=>'required',
-            'reward'=>'required'
+            'reward'=>'required|numeric'
         ]);
         $offer = new Offer();
         $offer->hospital_id = auth()->user()->id;
@@ -84,7 +87,7 @@ class OfferController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'offer'=>'required',
+            'offer'=>'required|numeric',
             'reward'=>'required'
         ]);
         $offer = Offer::find($id);

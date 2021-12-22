@@ -26,14 +26,14 @@
                   <div class="row">
                     <div class="col-md-6">
                       <select id="my-select" class="form-control form-select" name="blood_group">
-                        <option value="A+">A+</option>
-                        <option value="B+">B+</option>
-                        <option value="AB+">AB+</option>
-                        <option value="O+">O+</option>
-                        <option value="A-">A-</option>
-                        <option value="B-">B-</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O-">O-</option>
+                        <option value="A+" {{ session()->has('blood_group') != null ? (session('blood_group')=='A+'?'selected':'') : "" }}>A+</option>
+                        <option value="B+" {{ session()->has('blood_group') !=null ? (session('blood_group')=='B+'?'selected':'') : "" }}>B+</option>
+                        <option value="AB+" {{ session()->has('blood_group') !=null ? (session('blood_group')=='AB+'?'selected':'') : "" }}>AB+</option>
+                        <option value="O+" {{ session()->has('blood_group') !=null ? (session('blood_group')=='O+'?'selected':'') : "" }}>O+</option>
+                        <option value="A-" {{ session()->has('blood_group') !=null ? (session('blood_group')=='A-'?'selected':'') : "" }}>A-</option>
+                        <option value="B-" {{ session()->has('blood_group') !=null ? (session('blood_group')=='B-'?'selected':'') : "" }}>B-</option>
+                        <option value="AB-" {{ session()->has('blood_group') !=null ? (session('blood_group')=='AB-'?'selected':'') : "" }}>AB-</option>
+                        <option value="O-" {{ session()->has('blood_group') !=null ? (session('blood_group')=='O-'?'selected':'') : "" }}>O-</option>
                     </select>
                     </div>
                     <div class="col-md-6">
