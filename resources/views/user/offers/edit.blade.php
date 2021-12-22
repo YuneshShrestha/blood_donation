@@ -17,7 +17,7 @@
                         <label for="reward">Reward:</label>
                         <input id="reward" class="form-control" type="text" name="reward" value="{{ $offer->reward }}">
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2">Update</button>
+                    <button type="submit" class="btn btn-outline-danger mt-2">Update</button>
                 </form>
             </div>
         </div>

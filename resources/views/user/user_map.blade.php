@@ -67,7 +67,9 @@
                     html += '<p> Blood Group:';
                     html += data[index].blood_group;
                     html += '</p>';
-                    html += '<a href="/data" class="btn-sm btn-primary text-white">';
+                    html += '<a href="/send_notification/';
+                    html += data[index].id
+                    html += '" class="btn-sm btn-danger text-white">'
                     html += 'Send Message';
                     html += '</a>';
                     html += '</div>';

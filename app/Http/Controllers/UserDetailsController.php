@@ -15,12 +15,23 @@ class UserDetailsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $blood_group = $request['blood_group'] ?? "";
        if(auth()->user()->isUser == '0')
        {
-            $users = User::where('isUser','1')->get();
-            return view('user.home',compact('users'));
+            if($blood_group != ""){
+                $users = User::where([
+                    ['isUser','1'],
+                    ['blood_group', $blood_group]
+                ])->get();
+                return view('user.home',compact('users'));
+            }
+            else{
+                $users = User::where('isUser','1')->get();
+                return view('user.home',compact('users'));
+            }
+            
 
        }
        else{

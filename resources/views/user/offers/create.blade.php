@@ -16,7 +16,7 @@
                         <label for="reward">Reward:</label>
                         <input id="reward" class="form-control" type="text" name="reward">
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    <button type="submit" class="btn btn-outline-danger mt-2">Add</button>
                 </form>
             </div>
         </div>

@@ -14,7 +14,7 @@
                         {{ $notification->message }}
                     </p>
                     @if ($notification->isPending == 0)
-                        <a href="/reset_pending/{{ $notification->id }}" class="btn-sm btn-primary card-link">Accept</a>
+                        <a href="/reset_pending/{{ $notification->id }}" class="btn-sm btn-outline-danger">Accept</a>
                     @endif
                     {{-- <a href="#" class="card-link">Another link</a> --}}
                     </div>

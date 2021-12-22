@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger h-25 mb-2 shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <div style="width:40px; height: 40px; background-image: url({{ asset('/images/logo.png') }}); background-position: center; background-size: cover;" class="rounded-circle"></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

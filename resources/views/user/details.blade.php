@@ -47,13 +47,13 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Save/Update</button>
+                <button type="submit" class="btn btn-outline-danger mt-2">Update</button>
             </form>
             <hr>
             <b>Address Lookup</b>
             <div id="search">
                 <input type="text" name="addr" value="" id="addr" size="58" />
-                <button type="button" class="btn btn-primary" onclick="addr_search();">Search</button>
+                <button type="button" class="btn btn-outline-danger" onclick="addr_search();">Search</button>
                 <div id="results"></div>
             </div>
 
@@ -78,7 +78,7 @@
                 <label for="address">Address</label>
                 <input id="address" class="form-control" type="text" name="address" value="{{ $user->address }}">
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Update/Create</button>
+            <button type="submit" class="btn btn-outline-danger mt-2">Update</button>
         </form>
         @endif
         </div>
