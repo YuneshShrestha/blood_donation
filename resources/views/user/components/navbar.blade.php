@@ -8,19 +8,19 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/users_details">Home</a>
+            <a class="nav-link {{ (request()->is('users_details')) ? 'active' : '' }}" aria-current="page" href="/users_details">Home</a>
           </li>
           @if (Auth::user()->isUser)
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/show_notification">Notification</a>
+              <a class="nav-link {{ (request()->is('show_notification')) ? 'active' : '' }}" aria-current="page" href="/show_notification">Notification</a>
             </li>
           @endif
           <li class="nav-item">
-            <a class="nav-link" href="/users_details/{{ Auth::id() }}/edit">Details</a>
+            <a class="nav-link {{ (request()->is('users_details/*')) ? 'active' : '' }}" href="/users_details/{{ Auth::id() }}/edit">Details</a>
           </li>
           @if (!(Auth::user()->isUser))
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/offer">Offers</a>
+            <a class="nav-link {{ (request()->is('offer')) ? 'active' : '' }}" aria-current="page" href="/offer">Offers</a>
           </li>
         @endif
         

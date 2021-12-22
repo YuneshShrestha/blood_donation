@@ -49,7 +49,6 @@
               <div class="row">
                 
                 <div class="col-md-8 mr-2">
-                  <h3>Offer List</h3>
                   @foreach ($offers as $offer)
                     <div class="card mb-2">
                       <div class="card-body">

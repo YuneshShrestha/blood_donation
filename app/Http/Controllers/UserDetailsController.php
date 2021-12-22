@@ -6,6 +6,7 @@ use App\Models\Notification;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class UserDetailsController extends Controller
 {
@@ -130,7 +131,14 @@ class UserDetailsController extends Controller
         $notification->hospital_id = auth()->user()->id;
         $notification->message = "Need Urgent Blood";
         $notification->save();
-        return 'Success';
+        $user = User::find($id);
+        $hospital = User::find(auth()->user()->id);
+        Nexmo::message()->send([
+            'to'   => '977'.$user->phone,
+            'from' => '9779842064331',
+            'text' => 'Emergency!!! You need to donate your blood at '.$hospital->name.' located at '.$hospital->address.'. Please confirm your link http://127.0.0.1:8000/show_notification'
+        ]);
+        return redirect()->back();
     }
     public function show_notification()
     {
