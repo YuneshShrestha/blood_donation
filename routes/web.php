@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HospitalDetailsController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\UserDetailsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,6 @@ Route::get('/show_map', [UserDetailsController::class, 'show_map']);
 Route::get('/send_notification/{id}', [UserDetailsController::class, 'send_notification']);
 Route::get('/show_notification', [UserDetailsController::class, 'show_notification']);
 Route::get('/reset_pending/{id}', [UserDetailsController::class, 'reset_pending']);
+Route::resource('/offer', OfferController::class);
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
+use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,12 @@ class UserDetailsController extends Controller
 
        }
        else{
+           $offers = Offer::all();
            $notification_count = Notification::where([
                ['isPending',1],
                ['user_id',auth()->user()->id]
            ])->count();
-           return view('user.home',compact('notification_count'));
+           return view('user.home',compact('notification_count','offers'));
        }
         // return view('user.details');
     }

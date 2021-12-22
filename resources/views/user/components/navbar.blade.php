@@ -18,6 +18,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/users_details/{{ Auth::id() }}/edit">Details</a>
           </li>
+          @if (!(Auth::user()->isUser))
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/offer">Offers</a>
+          </li>
+        @endif
         
           @guest
           @if (Route::has('login'))

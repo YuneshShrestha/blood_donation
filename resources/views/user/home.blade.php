@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-end">
                 <a class="btn btn-danger my-3" href="/show_map">View Data In Map</a>
             </div>
-            <table class="table">
+            <table class="table table-bordered mt-2">
                 <thead>
                   <tr>
                     <th scope="col">SN</th>
@@ -50,18 +50,38 @@
                 
                 <div class="col-md-8 mr-2">
                   <h3>Offer List</h3>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Offer Title:</h5>
-                      <p class="card-text">By:</p>
-                      <p class="card-text">Required Points:</p>
-                      <button class="btn btn-primary">Collect</button>
+                  @foreach ($offers as $offer)
+                    <div class="card mb-2">
+                      <div class="card-body">
+                        <h5 class="card-title">Offer Title: {{ $offer->offer }}</h5>
+                        <p class="card-text text-muted">By: {{ $offer->hospital->name }}</p>
+                        <p class="card-text">Required Points: {{ $offer->reward }}</p>
+                        <button class="btn btn-primary">Collect</button>
+                      </div>
                     </div>
-                  </div>
+                  @endforeach
                 </div>
                 <div class="col-md-4 order-md-last order-first">
-                  <h3>Score:</h3>
-                  <p class="header">{{ $notification_count*10 }}</p>
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                          <div>
+                            <div class="d-flex justify-content-center">
+                              <img src="{{ asset('images/achievement.png') }}" class="img-fluid w-25 text-center" alt="">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                              <h3>Achievement</h3>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                              <p class="text-muted">Your Points</p>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                              <i class="header fs-4">{{ $notification_count*10 }}</i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
