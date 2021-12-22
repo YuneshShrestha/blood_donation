@@ -35,5 +35,6 @@ Route::get('/send_notification/{id}', [UserDetailsController::class, 'send_notif
 Route::get('/show_notification', [UserDetailsController::class, 'show_notification']);
 Route::get('/reset_pending/{id}', [UserDetailsController::class, 'reset_pending']);
 Route::resource('/offer', OfferController::class);
+Route::get('/book/{id}', [UserDetailsController::class, 'book']);
 
 

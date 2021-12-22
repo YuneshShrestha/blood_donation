@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Notification;
 use App\Models\Offer;
 use App\Models\User;
@@ -36,11 +37,13 @@ class UserDetailsController extends Controller
        }
        else{
            $offers = Offer::all();
+           $book = Book::where('user_id',auth()->user()->id)->get();
            $notification_count = Notification::where([
                ['isPending',1],
                ['user_id',auth()->user()->id]
            ])->count();
-           return view('user.home',compact('notification_count','offers'));
+           $amt = $notification_count * 5;
+           return view('user.home',compact('amt','offers','book'));
        }
         // return view('user.details');
     }
@@ -144,11 +147,11 @@ class UserDetailsController extends Controller
         $notification->save();
         $user = User::find($id);
         $hospital = User::find(auth()->user()->id);
-        Nexmo::message()->send([
-            'to'   => '977'.$user->phone,
-            'from' => '9779842064331',
-            'text' => 'Emergency!!! You need to donate your blood at '.$hospital->name.' located at '.$hospital->address.'. Please confirm your link http://127.0.0.1:8000/show_notification'
-        ]);
+        // Nexmo::message()->send([
+        //     'to'   => '977'.$user->phone,
+        //     'from' => '9779842064331',
+        //     'text' => 'Emergency!!! You need to donate your blood at '.$hospital->name.' located at '.$hospital->address.'. Please confirm your link http://127.0.0.1:8000/show_notification'
+        // ]);
         return redirect()->back();
     }
     public function show_notification()
@@ -160,6 +163,15 @@ class UserDetailsController extends Controller
         $notification = Notification::find($id);
         $notification->isPending = 1;
         $notification->update();
+        return redirect()->back();
+    }
+    public function book($id)
+    {
+        $book = new Book();
+        $book->user_id = auth()->user()->id;
+        $book->offer_id = $id;
+        $book->save();
+
         return redirect()->back();
     }
 }

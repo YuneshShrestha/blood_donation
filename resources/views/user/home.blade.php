@@ -74,13 +74,21 @@
               <div class="row">
                 
                 <div class="col-md-8 mr-2">
+                  <?php $count=0 ?>
+                  @foreach ($book as $item)
+                    <?php $count+= $item->offer->reward ?>
+                  @endforeach
                   @foreach ($offers as $offer)
                     <div class="card mb-2">
                       <div class="card-body">
                         <h5 class="card-title">Offer Title: {{ $offer->offer }}</h5>
                         <p class="card-text text-muted">By: {{ $offer->hospital->name }}</p>
-                        <p class="card-text">Required Points: {{ $offer->reward }}</p>
-                        <button class="btn btn-outline-danger">Collect</button>
+                        {{-- <p class="card-text">Required Points: {{ $offer->reward }}</p> --}}
+                        {{-- <p>{{ $amt - $count }}</p>
+                        <p>{{ $offer->reward }}</p> --}}
+                        @if (($amt-$count) >= $offer->reward)
+                          <a class="btn btn-danger" href="/book/{{ $offer->id }}">Grab Offer At {{ $offer->reward }}</a>
+                        @endif
                       </div>
                     </div>
                   @endforeach
@@ -101,7 +109,8 @@
                             </div>
                             <div class="d-flex justify-content-center">
                               <img src="{{ asset('images/coin.png') }}" class="mt-4" alt="" height="40px">
-                              <i class="display-2">{{ $notification_count*10 }}</i>
+                              {{-- <p>{{ $count }}</p> --}}
+                              <i class="display-2">{{ $amt-$count }}</i>
                             </div>
                           </div>
                         </div>
