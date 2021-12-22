@@ -18,10 +18,10 @@
                 <div class="form-group pb-2">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="blood_group">Blood Group</label>
+                            <label for="blood_group"><b>Blood Group</b></label>
                         </div>
                         <div class="col-md-8">
-                            <select id="my-select" class="form-control" name="blood_group">
+                            <select id="my-select" class="form-control form-select" name="blood_group">
                                 <option value="A+" {{ $user->blood_group=="A+" ? 'selected' : ''}}>A+</option>
                                 <option value="B+" {{ $user->blood_group=="B+" ? 'selected' : ''}}>B+</option>
                                 <option value="AB+" {{ $user->blood_group=="AB+" ? 'selected' : ''}}>AB+</option>
@@ -37,19 +37,24 @@
                 <div class="form-group pb-2">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="phone">Phone</label>
+                            <label for="phone"><b>Phone</b></label>
 
                         </div>
                         <div class="col-md-8">
-                            <input id="phone" class="form-control" type="text" name="phone" value="{{ $user->phone }}">
-
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">+977</span>
+                                <input type="phone" class="form-control" aria-label="Username" name="phone" aria-describedby="basic-addon1"  value="{{ $user->phone }}">
+                            </div>
                         </div>
+                        @error('phone')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
-                <div class="form-group pb-2">
+                <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="address">Address</label>
+                            <label for="address"><b>Address</b></label>
                         </div>
                         <div class="col-md-8">
                             <input id="user_address" class="form-control" type="text" name="address" value="{{ $user->address }}">
@@ -102,7 +107,7 @@
             <div class="form-group pb-2">
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="pan_no">Pan No.</label>
+                        <label for="pan_no"><b>PAN No.</b></label>
                     </div>
                     <div class="col-md-8">
                          <input type="text" class="form-control" name="pan" value="{{ $user->pan }}">
@@ -113,17 +118,25 @@
             <div class="form-group pb-2">
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="phone">Phone</label>
+                        <label for="phone"><b>Phone</b></label>
                     </div>
                     <div class="col-md-8">
-                         <input id="phone" class="form-control" type="text" name="phone" value="{{ $user->phone }}">
+                         <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">+977</span>
+                            <input id="phone" class="form-control" type="text" name="phone" value="{{ $user->phone }}">
+                        </div>
+                        @error('phone')
+                               <p class="text-danger">{{ $message }}</p>
+                        @enderror
+
                     </div>
                 </div>
+                
             </div>
             <div class="form-group pb-2">
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="address">Address</label>
+                        <label for="address"><b>Address</b></label>
                     </div>
                     <div class="col-md-8">
                         <input id="address" class="form-control" type="text" name="address" value="{{ $user->address }}">

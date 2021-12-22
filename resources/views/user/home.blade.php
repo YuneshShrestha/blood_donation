@@ -22,10 +22,10 @@
                   @endif
                 <form action="/users_details" method="GET">
                   @csrf
-                  <label for="blood_group">Search By Blood Group:</label>
+                  <label for="blood_group"><b>Search By Blood Group:</b></label>
                   <div class="row">
                     <div class="col-md-6">
-                      <select id="my-select" class="form-control" name="blood_group">
+                      <select id="my-select" class="form-control form-select" name="blood_group">
                         <option value="A+">A+</option>
                         <option value="B+">B+</option>
                         <option value="AB+">AB+</option>
@@ -58,7 +58,7 @@
                           <th scope="row">{{ ++$count }}</th>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->blood_group }}</td>
-                          <td>{{ $user->phone }}</td>
+                          <td>+977-{{ $user->phone }}</td>
                           <td>{{ $user->address }}</td>
                           <td><a class="btn btn-outline-danger" href="/send_notification/{{ $user->id }}"><i class="fa fa-envelope"></i></a></td>
                       </tr>

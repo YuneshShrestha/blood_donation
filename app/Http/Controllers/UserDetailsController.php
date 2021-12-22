@@ -114,6 +114,9 @@ class UserDetailsController extends Controller
         $user = User::find($id);
         // return $request;
         $user->phone = $request->phone;
+        $request->validate([
+            'phone'=>'min:10'
+        ]);
         $user->address = $request->address;
         if(isset($request->blood_group)){
             $user->blood_group = $request->blood_group;
@@ -158,11 +161,11 @@ class UserDetailsController extends Controller
         $notification->save();
         $user = User::find($id);
         $hospital = User::find(auth()->user()->id);
-        // Nexmo::message()->send([
-        //     'to'   => '977'.$user->phone,
-        //     'from' => '9779842064331',
-        //     'text' => 'Emergency!!! You need to donate your blood at '.$hospital->name.' located at '.$hospital->address.'. Please confirm your link http://127.0.0.1:8000/show_notification'
-        // ]);
+        Nexmo::message()->send([
+            'to'   => '977'.$user->phone,
+            'from' => '9779842064331',
+            'text' => 'Emergency!!! You need to donate your blood at '.$hospital->name.' located at '.$hospital->address.'. Please confirm your link http://127.0.0.1:8000/show_notification'
+        ]);
         $request->session()->flash('message','Message Sent');
         return redirect()->back();
     }

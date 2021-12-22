@@ -15,10 +15,16 @@
                     <div class="form-group">
                         <label for="offer">Offer:</label>
                         <input id="offer" class="form-control" type="text" name="offer" value="{{ $offer->offer }}">
+                        @error('offer')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="reward">Reward:</label>
                         <input id="reward" class="form-control" type="text" name="reward" value="{{ $offer->reward }}">
+                        @error('reward')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-outline-danger mt-2">Update</button>
                 </form>

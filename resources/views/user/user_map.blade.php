@@ -61,10 +61,10 @@
                     html = '<div>';
 
                     // html += '../../public/image'+data[index].image;
-                    html += '<p> Name:';
+                    html += '<p> <b>Name:</b>';
                     html += data[index].name;
                     html += '</p>';
-                    html += '<p> Blood Group:';
+                    html += '<p> <b>Blood Group:</b>';
                     html += data[index].blood_group;
                     html += '</p>';
                     html += '<a href="/send_notification/';

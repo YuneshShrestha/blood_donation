@@ -22,7 +22,7 @@
           </li>
           @if (!(Auth::user()->isUser))
           <li class="nav-item">
-            <a class="nav-link {{ (request()->is('offer')) ? 'active' : '' }}" aria-current="page" href="/offer">Offers</a>
+            <a class="nav-link {{ (request()->is('offer*')) ? 'active' : '' }}" aria-current="page" href="/offer">Offers</a>
           </li>
         @endif
         

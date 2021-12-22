@@ -83,6 +83,10 @@ class OfferController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'offer'=>'required',
+            'reward'=>'required'
+        ]);
         $offer = Offer::find($id);
         $offer->offer = $request->offer;
         $offer->reward = $request->reward;
