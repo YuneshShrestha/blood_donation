@@ -15,6 +15,11 @@
             </div>
             <div class="card">
               <div class="card-body">
+                
+
+                @if (session()->has('message'))
+                    <p class="text-success">{{ session('message') }}</p>
+                  @endif
                 <form action="/users_details" method="GET">
                   @csrf
                   <label for="blood_group">Search By Blood Group:</label>

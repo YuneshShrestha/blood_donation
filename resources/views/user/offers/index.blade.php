@@ -9,6 +9,9 @@
         </div>
         <div class="card mt-4">
             <div class="card-body">
+                @if (session()->has('message'))
+                    <p class="text-success">{{ session('message') }}</p>
+                @endif
                 <table class="table table-bordered mt-2">
                     <thead>
                       <tr>

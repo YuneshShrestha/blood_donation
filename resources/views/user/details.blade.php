@@ -93,6 +93,9 @@
 
           </div>
         @else
+        @if (session()->has('message'))
+            <p class="text-success">{{ session('message') }}</p>
+        @endif
         <form action="/users_details/{{ Auth::id() }}" method="POST">
             @csrf
             @method('PUT')

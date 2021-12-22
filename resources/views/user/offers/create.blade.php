@@ -6,6 +6,9 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
+                @if (session()->has('message'))
+                    <p class="text-success">{{ session('message') }}</p>
+                @endif
                 <form action="/offer" method="POST">
                     @csrf
                     <div class="form-group">

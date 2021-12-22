@@ -150,7 +150,7 @@ class UserDetailsController extends Controller
     public function show_map(){
         return view('user.user_map');
     }
-    public function send_notification($id){
+    public function send_notification($id, Request $request){
         $notification = new Notification();
         $notification->user_id = $id;
         $notification->hospital_id = auth()->user()->id;
@@ -163,6 +163,7 @@ class UserDetailsController extends Controller
         //     'from' => '9779842064331',
         //     'text' => 'Emergency!!! You need to donate your blood at '.$hospital->name.' located at '.$hospital->address.'. Please confirm your link http://127.0.0.1:8000/show_notification'
         // ]);
+        $request->session()->flash('message','Message Sent');
         return redirect()->back();
     }
     public function show_notification()

@@ -45,6 +45,7 @@ class OfferController extends Controller
         $offer->offer = $request->offer;
         $offer->reward = $request->reward;
         $offer->save();
+        $request->session()->flash('message','Record Added');
         return redirect('/offer');
 
 
@@ -86,6 +87,7 @@ class OfferController extends Controller
         $offer->offer = $request->offer;
         $offer->reward = $request->reward;
         $offer->update();
+        $request->session()->flash('message','Record Updated');
         return redirect('/offer');
     }
 
@@ -99,6 +101,7 @@ class OfferController extends Controller
     {
         $offer = Offer::find($id);
         $offer->delete();
+        // $request->session()->flash('message','Record Updated');
         return redirect()->back();
     }
 }
