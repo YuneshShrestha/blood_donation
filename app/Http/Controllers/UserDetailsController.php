@@ -128,6 +128,7 @@ class UserDetailsController extends Controller
             $user->lon = $request->lon;
         }
         $user->update();
+        $request->session()->flash('message','Record Updated');
         return redirect()->back();
     }
 

@@ -9,6 +9,9 @@
             <div class="card-body container">
         @if (Auth::user()->isUser)
           <div>
+              @if (session()->has('message'))
+                  <p class="text-success">{{ session('message') }}</p>
+              @endif
             <form action="/users_details/{{ Auth::id() }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -96,7 +99,7 @@
             <div class="form-group pb-2">
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="blood_group">Pan No.</label>
+                        <label for="pan_no">Pan No.</label>
                     </div>
                     <div class="col-md-8">
                          <input type="text" class="form-control" name="pan" value="{{ $user->pan }}">
