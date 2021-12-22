@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger h-25 mb-2 shadow-sm">
     <div class="container">
-      <div style="width:40px; height: 40px; background-image: url({{ asset('/images/logo.png') }}); background-position: center; background-size: cover;" class="rounded-circle"></div>
+      <a href="/users_details">
+        <div style="width:40px; height: 40px; background-image: url({{ asset('/images/logo.png') }}); background-position: center; background-size: cover;" class="rounded-circle"></div>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -12,7 +14,7 @@
           </li>
           @if (Auth::user()->isUser)
             <li class="nav-item">
-              <a class="nav-link {{ (request()->is('show_notification')) ? 'active' : '' }}" aria-current="page" href="/show_notification">Notification</a>
+              <a class="nav-link {{ (request()->is('show_notification')) ? 'active' : '' }}" aria-current="page" href="/show_notification">Notification <span class="badge bg-secondary rounded-circle bg-warning text-dark">{{ $notification_pending }}</span></a>
             </li>
           @endif
           <li class="nav-item">

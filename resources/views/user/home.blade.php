@@ -32,7 +32,7 @@
                     </select>
                     </div>
                     <div class="col-md-6">
-                      <button type="submit" class="btn btn-outline-danger">Search</button>
+                      <button type="submit" class="btn btn-outline-danger"><i class="fas fa-search"></i></button>
                     </div>
                   </div>                
                 </form>
@@ -55,7 +55,7 @@
                           <td>{{ $user->blood_group }}</td>
                           <td>{{ $user->phone }}</td>
                           <td>{{ $user->address }}</td>
-                          <td><a class="btn btn-outline-danger" href="/send_notification/{{ $user->id }}">Message</a></td>
+                          <td><a class="btn btn-outline-danger" href="/send_notification/{{ $user->id }}"><i class="fa fa-envelope"></i></a></td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -87,7 +87,10 @@
                         {{-- <p>{{ $amt - $count }}</p>
                         <p>{{ $offer->reward }}</p> --}}
                         @if (($amt-$count) >= $offer->reward)
-                          <a class="btn btn-danger" href="/book/{{ $offer->id }}">Grab Offer At {{ $offer->reward }}</a>
+                          <a class="btn btn-danger" href="/book/{{ $offer->id }}">Grab Offer At <img src="{{ asset('/images/coin.png') }}" width="20px" height="20px" alt="">  {{ $offer->reward }}</a>
+                        @else
+                          <a class="btn btn-danger disabled" href="/book/{{ $offer->id }}">Grab Offer At <img src="{{ asset('/images/coin.png') }}" width="20px" height="20px" alt="">  {{ $offer->reward }}</a>
+
                         @endif
                       </div>
                     </div>

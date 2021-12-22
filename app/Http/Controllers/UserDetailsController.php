@@ -19,6 +19,7 @@ class UserDetailsController extends Controller
     public function index(Request $request)
     {
         $blood_group = $request['blood_group'] ?? "";
+       
        if(auth()->user()->isUser == '0')
        {
             if($blood_group != ""){
@@ -29,6 +30,7 @@ class UserDetailsController extends Controller
                 return view('user.home',compact('users'));
             }
             else{
+               
                 $users = User::where('isUser','1')->get();
                 return view('user.home',compact('users'));
             }
@@ -36,6 +38,10 @@ class UserDetailsController extends Controller
 
        }
        else{
+            $notification_pending = Notification::where([
+                ['user_id',auth()->user()->id],
+                ['isPending','0']
+            ])->count();
            $offers = Offer::all();
            $book = Book::where('user_id',auth()->user()->id)->get();
            $notification_count = Notification::where([
@@ -43,7 +49,7 @@ class UserDetailsController extends Controller
                ['user_id',auth()->user()->id]
            ])->count();
            $amt = $notification_count * 5;
-           return view('user.home',compact('amt','offers','book'));
+           return view('user.home',compact('amt','offers','book','notification_pending'));
        }
         // return view('user.details');
     }
@@ -88,8 +94,12 @@ class UserDetailsController extends Controller
      */
     public function edit($id)
     {
+        $notification_pending = Notification::where([
+            ['user_id',auth()->user()->id],
+            ['isPending','0']
+        ])->count();
         $user = User::find($id);
-        return view('user.details',compact('user'));
+        return view('user.details',compact('user','notification_pending'));
     }
 
     /**
@@ -156,8 +166,12 @@ class UserDetailsController extends Controller
     }
     public function show_notification()
     {
+        $notification_pending = Notification::where([
+            ['user_id',auth()->user()->id],
+            ['isPending','0']
+        ])->count();
         $notifications = Notification::where('user_id', auth()->user()->id)->orderBy('id','DESC')->get();
-        return view('user.show_notification', compact('notifications'));
+        return view('user.show_notification', compact('notifications','notification_pending'));
     }
     public function reset_pending($id){
         $notification = Notification::find($id);
@@ -174,4 +188,5 @@ class UserDetailsController extends Controller
 
         return redirect()->back();
     }
+   
 }

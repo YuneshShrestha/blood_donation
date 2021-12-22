@@ -38,3 +38,4 @@ Route::resource('/offer', OfferController::class);
 Route::get('/book/{id}', [UserDetailsController::class, 'book']);
 
 
+

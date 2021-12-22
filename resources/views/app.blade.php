@@ -8,13 +8,13 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <style type="text/css">
       html, body { width:100%;padding:0;margin:0; }
       .container { width:95%;max-width:980px;padding:1% 2%;margin:0 auto }
       #lat, #lon { text-align:right }
-      #map { width:100%;height: 400px;padding:0;margin:0; }
+      #map { width:100%;height: 250px;padding:0;margin:0; }
       .address { cursor:pointer }
       .address:hover { color:#AA0000;text-decoration:underline }
       a{text-decoration: none}
