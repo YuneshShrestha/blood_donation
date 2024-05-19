@@ -15,8 +15,13 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Dependencies Autoupdate
-        uses: romoh/dependencies-autoupdate@v1.2
+      - name: Dependencies Update Check
+        run: npm install -g npm-check-updates
+
+      - name: Dependecies AutoUpdate
+        run: |
+          npx npm-check-updates -u
+          npm install
 
       - name: Commit changes
         run: |
